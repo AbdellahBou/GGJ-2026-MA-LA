@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 65317591}
   - component: {fileID: 65317590}
   - component: {fileID: 65317589}
+  - component: {fileID: 65317592}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -223,6 +224,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &65317592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65317587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69718c5fc33084c4d95b53da970d809f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtCamera
 --- !u!1 &155612386
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,8 +377,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 386282977}
+  - {fileID: 1990287764}
   - {fileID: 65317588}
+  - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &155612392
@@ -412,6 +426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   playerRB: {fileID: 0}
   moveSpeed: 35
+  rotationAngel: 0
+  jumpForce: 25
   actions: {fileID: -944628639613478452, guid: 7eb8d24879e548741a9327a44e6bcc5f, type: 3}
 --- !u!114 &155612394
 MonoBehaviour:
@@ -441,6 +457,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -516,11 +533,11 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.051619373, y: -0, z: -0, w: 0.9986668}
-  m_LocalPosition: {x: 0, y: 1.96, z: -6.6}
+  m_LocalPosition: {x: 0, y: 1.29, z: -6.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 155612391}
   m_LocalEulerAnglesHint: {x: 5.918, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -580,6 +597,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   playerTransform: {fileID: 155612391}
   offset: {x: 0, y: 5, z: -10}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258065d67f9287f47abbfd45d92a1f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  mouseSensitivity: 35
+  playerBody: {fileID: 155612391}
+  maxRange: 100
+  minRange: -100
 --- !u!1 &346516229
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,6 +697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 386282977}
+  - component: {fileID: 386282978}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -680,12 +714,25 @@ Transform:
   m_GameObject: {fileID: 386282976}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0.44, z: 0.96}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 155612391}
+  m_Father: {fileID: 1990287764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &386282978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386282976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6199dc28fa1c34e87481dc6b03f459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAt
+  playerPosition: {fileID: 1707409015}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1259,7 @@ GameObject:
   - component: {fileID: 1583231080}
   - component: {fileID: 1583231079}
   - component: {fileID: 1583231078}
+  - component: {fileID: 1583231081}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -1304,6 +1352,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1583231081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583231076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69718c5fc33084c4d95b53da970d809f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtCamera
 --- !u!1 &1683481416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,6 +1457,7 @@ GameObject:
   - component: {fileID: 1707409012}
   - component: {fileID: 1707409011}
   - component: {fileID: 1707409016}
+  - component: {fileID: 1707409017}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -1506,14 +1567,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707409010}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.0031241325, z: 0, w: 0.9999951}
   m_LocalPosition: {x: 0.5, y: 2.95, z: 21.8}
   m_LocalScale: {x: 4.27, y: 4.27, z: 4.27}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1583231077}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.358, z: 0}
 --- !u!54 &1707409016
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1541,6 +1602,51 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1707409017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707409010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6199dc28fa1c34e87481dc6b03f459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerPosition: {fileID: 155612391}
+--- !u!1 &1990287763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990287764}
+  m_Layer: 0
+  m_Name: BarrelHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1990287764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990287763}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.53, z: 1.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 386282977}
+  m_Father: {fileID: 155612391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2026553244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,7 +1801,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1409451098}

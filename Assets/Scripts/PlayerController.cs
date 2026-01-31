@@ -8,7 +8,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRB;
     [SerializeField]
     private float moveSpeed = 5f;
+    [SerializeField]
+    private float rotationAngel = 5f;
+    [SerializeField]
+    private float jumpForce = 25f;
+
+
     private InputAction moveAction;
+    private InputAction jumpAction;
     public InputActionAsset actions;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +24,7 @@ public class PlayerController : MonoBehaviour
         
         // Find the "Move" action within the "Player" action map
         moveAction = actions.FindActionMap("Movement").FindAction("Move");
-
+        jumpAction = actions.FindActionMap("Movement").FindAction("Jump");
         // Actions must be enabled to work
         moveAction.Enable();
     }
@@ -36,7 +43,20 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate() // Use FixedUpdate for physics-based movement
     {
         Vector2 moveDirection = moveAction.ReadValue<Vector2>();
-        //Debug.Log($"Move Direction: {moveDirection}");
+        float jump = jumpAction.ReadValue<float>();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRB.AddForce(Vector3.up * jumpForce);
+        }
+        if(moveDirection.x < 0)
+        {
+            //transform.Rotate(Vector3.up * rotationAngel * rotationSpeed);
+        }
+        else
+        {
+            //transform.Rotate(Vector3.up * -rotationAngel * rotationSpeed);
+        }
+       Debug.Log($"Move Direction: {moveDirection}");
         Vector3 movement = new Vector3(moveDirection.x, 0.0f, moveDirection.y);
         playerRB.AddForce(movement * moveSpeed);
     }

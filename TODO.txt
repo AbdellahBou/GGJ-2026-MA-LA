@@ -1,0 +1,10 @@
+#GGJ 2026 - Laayoune#
+
+TODO List
+	- Player Movement Script (Jump excluded)  -> Done
+	- Camera Follow Script  -> Done 
+	- Shooting -> Done (Need some improvement)
+	- Grabbing Items (Masks)
+	- Boss AI Script
+	- Health bar System (Hero & Boss) -> 70%
+	
